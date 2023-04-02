@@ -1,0 +1,24 @@
+.task {
+    display: grid;
+    background-color: #EEEFEF;
+    grid-template-columns: 10% 80% 10%;
+    margin: 0.5rem 0;
+    padding: 0.6rem 0.3rem;
+    border-radius: 5px;
+}
+
+.checkmark {
+    appearance: none;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    background-color: #EEEFEF;
+    border-radius: 50%;
+    border: 2px solid #AEAEAE;
+}
+
+.checkmark:checked {
+    background-color: #27CC70;
+    border: 3px solid #EEEFEF;
+    outline: 2px solid #27CC70;
+  }
