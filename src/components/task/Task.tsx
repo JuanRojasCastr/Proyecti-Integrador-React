@@ -1,3 +1,4 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import './Task.css'
 
 interface Task {
@@ -19,7 +20,9 @@ const Task = ({id, description, completed, onTaskCompleted, onDeleteTask}: Task)
                 onChange={() => onTaskCompleted(id)}
             />
             <span>{description}</span>
-            <button onClick={() => onDeleteTask(id)}>Delete</button>
+            <button className='deleteTask' onClick={() => onDeleteTask(id)}>
+                <DeleteIcon />
+            </button>
         </li>
     )
 }

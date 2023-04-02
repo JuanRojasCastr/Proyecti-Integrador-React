@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Task from '../task/Task';
 import './TodoList.css'
 
@@ -9,7 +9,10 @@ interface TaskType {
 }
 
 const TodoList = () => {
-  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [tasks, setTasks] = useState<TaskType[]>(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  });
   const [inputValue, setInputValue] = useState<string>("");
 
   const addTask = () => {
@@ -26,6 +29,10 @@ const TodoList = () => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
     setInputValue("");
   };
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const deleteTask = (taskId: number) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
